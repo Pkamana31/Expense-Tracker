@@ -1,7 +1,9 @@
 import json
 from datetime import datetime
 from pathlib import Path
+import csv
 
+# File path for storing data
 EXPENSE_FILE = Path(__file__).parent / "expenses.json"
 
 class Expense:
@@ -41,3 +43,18 @@ def load_expenses():
 def save_expenses(expenses):
     with open(EXPENSE_FILE, "w") as f:
         json.dump([e.to_dict() for e in expenses], f, indent=2)
+
+def export_to_csv(filename="expenses_export.csv"):
+    expenses = load_expenses()
+    if not expenses:
+        print("No expenses to export.")
+        return
+
+    with open(filename, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Amount", "Category", "Date", "Note"])
+        for e in expenses:
+            writer.writerow([e.amount, e.category, e.date, e.note])
+
+    print(f"📁 Exported {len(expenses)} expenses to {filename}")
+
