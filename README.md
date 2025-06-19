@@ -1,8 +1,6 @@
 #  Expense Tracker – Python CLI App
 
-<p align="center">
-  <img src="./Thumbnail.png" width="720" alt="Expense Tracker Project Preview"/>
-</p>
+<img src="./expense-tracker/Thumbnail.png" width="720" alt="Expense Tracker Project Preview"/>
 
 
 A command-line Python app to manage and analyze your expenses.  
